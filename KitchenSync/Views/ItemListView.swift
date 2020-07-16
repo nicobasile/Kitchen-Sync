@@ -37,42 +37,52 @@ enum InputError: Error {
 }
 
 struct ItemListView : View {
-    var items: [Item] = testItems
+    @ObservedObject var itemListVM = ItemListViewModel()
+    @State var newItem = false
 
     var body: some View {
-         VStack {
-             // Header
-             Text("Kitchen Sync");
+        VStack {
+            // Header
+            Text("Kitchen Sync");
             
-             // Item List
-             List {
-                 ForEach(self.items) { item in
-                    ItemCell(itemCellVM: )
-                 }
-                 //.onDelete(perform: self.removeItem)
-                 .onTapGesture { print("Tap") }
-             }
+            // Item List
+            List {
+                ForEach(itemListVM.itemCellViewModels) { itemCellVM in
+                    ItemCell(itemCellVM: itemCellVM)
+                }
+                .onDelete { indexSet in
+                    self.itemListVM.removeItem(atOffsets: indexSet)
+                }
+                if newItem {
+                    ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in
+                        if case .success(let item) = result {
+                            self.itemListVM.addItem(item: item)
+                        }
+                        self.newItem.toggle()
+                    }
+                }
+            }
             
-             // New Item
-             /*Form {
-                 /*TextField("New Entry", text: $newItem.name, onCommit: self.addItem)*/
-                TextField("New Entry", text: "Temp")
-                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                 .padding()
-             }*/
-            
-             // Bottom Buttons
-             HStack {
-                 Button(action: { /*self.items.removeAll()*/ }) {
-                     Text("Finish Grocery Trip")
-                 }
-                 .padding()
-                 .accentColor(Color(UIColor.systemRed))
-                Button(action: { /*self.items.append(Item(name: "Cookies", completed: false))*/ }) {
-                    Text("PlaceHolder")
-                 }
-                 .padding()
-                 .accentColor(Color(UIColor.systemRed))
+            // Bottom Buttons
+            HStack {
+                Spacer()
+                Button(action: { /*self.items.removeAll()*/ }) {
+                    Text("Finish Trip")
+                }
+                    .padding()
+                    .accentColor(Color(UIColor.systemRed))
+                Spacer()
+                Button(action: { self.newItem.toggle() }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("New Item")
+                    }
+                }
+                    .padding()
+                    .accentColor(Color(UIColor.systemRed))
+                Spacer()
             }
         }
     }
