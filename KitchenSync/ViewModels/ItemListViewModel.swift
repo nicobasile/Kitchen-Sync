@@ -8,16 +8,22 @@
 
 import Foundation
 import Combine
+import Resolver
 
 class ItemListViewModel: ObservableObject {
+    @Published var itemRepository: ItemRepository = Resolver.resolve()
     @Published var itemCellViewModels = [ItemCellViewModel]()
     
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        self.itemCellViewModels = testItems.map { item in
-            ItemCellViewModel(item: item)
+        itemRepository.$items.map { items in
+            items.map { item in
+                ItemCellViewModel(item: item)
+            }
         }
+            .assign(to: \.itemCellViewModels, on: self)
+            .store(in: &cancellables)
     }
     
     func addItem(item: Item) {

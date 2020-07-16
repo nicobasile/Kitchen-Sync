@@ -3,27 +3,41 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47BD0A19A51FE3931C6CB5F0 /* Pods_KitchenSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E168E661B9FF22FF87620F5 /* Pods_KitchenSync.framework */; };
+		5C7EB70A24C0E2DC002AABCF /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */; };
 		5CED1BBD24BFB18B00DF3126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */; };
 		5CED1BBF24BFB18B00DF3126 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */; };
-		5CED1BC124BFB18B00DF3126 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BC024BFB18B00DF3126 /* ContentView.swift */; };
 		5CED1BC324BFB18F00DF3126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CED1BC224BFB18F00DF3126 /* Assets.xcassets */; };
 		5CED1BC624BFB18F00DF3126 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CED1BC524BFB18F00DF3126 /* Preview Assets.xcassets */; };
 		5CED1BC924BFB18F00DF3126 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CED1BC724BFB18F00DF3126 /* LaunchScreen.storyboard */; };
+		5CED1BD224C0CC0B00DF3126 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BD124C0CC0B00DF3126 /* Task.swift */; };
+		5CED1BD524C0CCCC00DF3126 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BD424C0CCCC00DF3126 /* ItemListView.swift */; };
+		5CED1BD924C0D02B00DF3126 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BD824C0D02B00DF3126 /* ItemListViewModel.swift */; };
+		5CED1BDB24C0D05E00DF3126 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BDA24C0D05E00DF3126 /* ItemCellViewModel.swift */; };
+		5CED1BDE24C0DAD300DF3126 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BDD24C0DAD300DF3126 /* ItemRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5CED1BB924BFB18B00DF3126 /* KitchenSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
+		5CED1BB924BFB18B00DF3126 /* Kitchen Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5CED1BC024BFB18B00DF3126 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5CED1BC224BFB18F00DF3126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CED1BC524BFB18F00DF3126 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CED1BC824BFB18F00DF3126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CED1BCA24BFB18F00DF3126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CED1BD124C0CC0B00DF3126 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		5CED1BD424C0CCCC00DF3126 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		5CED1BD824C0D02B00DF3126 /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
+		5CED1BDA24C0D05E00DF3126 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		5CED1BDD24C0DAD300DF3126 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		7E168E661B9FF22FF87620F5 /* Pods_KitchenSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A6836D65E927ABFD83C72B1 /* Pods-KitchenSync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenSync.debug.xcconfig"; path = "Target Support Files/Pods-KitchenSync/Pods-KitchenSync.debug.xcconfig"; sourceTree = "<group>"; };
+		FBC60B84161547F4BEEBA0FB /* Pods-KitchenSync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenSync.release.xcconfig"; path = "Target Support Files/Pods-KitchenSync/Pods-KitchenSync.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,24 +45,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BD0A19A51FE3931C6CB5F0 /* Pods_KitchenSync.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F10A23BEF264353955C753F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E168E661B9FF22FF87620F5 /* Pods_KitchenSync.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5CED1BB024BFB18B00DF3126 = {
 			isa = PBXGroup;
 			children = (
 				5CED1BBB24BFB18B00DF3126 /* KitchenSync */,
 				5CED1BBA24BFB18B00DF3126 /* Products */,
+				63127F8AFB205EB0CD629883 /* Pods */,
+				2F10A23BEF264353955C753F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		5CED1BBA24BFB18B00DF3126 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5CED1BB924BFB18B00DF3126 /* KitchenSync.app */,
+				5CED1BB924BFB18B00DF3126 /* Kitchen Sync.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,9 +81,11 @@
 		5CED1BBB24BFB18B00DF3126 /* KitchenSync */ = {
 			isa = PBXGroup;
 			children = (
-				5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */,
-				5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */,
-				5CED1BC024BFB18B00DF3126 /* ContentView.swift */,
+				5CED1BDC24C0DABE00DF3126 /* Repositories */,
+				5CED1BD724C0D01900DF3126 /* ViewModels */,
+				5CED1BD624C0CF3800DF3126 /* App */,
+				5CED1BD324C0CCBC00DF3126 /* Views */,
+				5CED1BD024C0CBE000DF3126 /* Models */,
 				5CED1BC224BFB18F00DF3126 /* Assets.xcassets */,
 				5CED1BC724BFB18F00DF3126 /* LaunchScreen.storyboard */,
 				5CED1BCA24BFB18F00DF3126 /* Info.plist */,
@@ -75,6 +102,58 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5CED1BD024C0CBE000DF3126 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CED1BD124C0CC0B00DF3126 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5CED1BD324C0CCBC00DF3126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CED1BD424C0CCCC00DF3126 /* ItemListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CED1BD624C0CF3800DF3126 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */,
+				5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */,
+				5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5CED1BD724C0D01900DF3126 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5CED1BD824C0D02B00DF3126 /* ItemListViewModel.swift */,
+				5CED1BDA24C0D05E00DF3126 /* ItemCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5CED1BDC24C0DABE00DF3126 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5CED1BDD24C0DAD300DF3126 /* ItemRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		63127F8AFB205EB0CD629883 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A6836D65E927ABFD83C72B1 /* Pods-KitchenSync.debug.xcconfig */,
+				FBC60B84161547F4BEEBA0FB /* Pods-KitchenSync.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CED1BCD24BFB18F00DF3126 /* Build configuration list for PBXNativeTarget "KitchenSync" */;
 			buildPhases = (
+				51242A492B8D6845ABF69D03 /* [CP] Check Pods Manifest.lock */,
 				5CED1BB524BFB18B00DF3126 /* Sources */,
 				5CED1BB624BFB18B00DF3126 /* Frameworks */,
 				5CED1BB724BFB18B00DF3126 /* Resources */,
+				E9D518979564B6D9A832AC29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -92,7 +173,7 @@
 			);
 			name = KitchenSync;
 			productName = KitchenSync;
-			productReference = 5CED1BB924BFB18B00DF3126 /* KitchenSync.app */;
+			productReference = 5CED1BB924BFB18B00DF3126 /* Kitchen Sync.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,14 +222,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51242A492B8D6845ABF69D03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KitchenSync-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9D518979564B6D9A832AC29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KitchenSync/Pods-KitchenSync-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KitchenSync/Pods-KitchenSync-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KitchenSync/Pods-KitchenSync-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CED1BB524BFB18B00DF3126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CED1BD524C0CCCC00DF3126 /* ItemListView.swift in Sources */,
+				5CED1BD224C0CC0B00DF3126 /* Task.swift in Sources */,
+				5CED1BD924C0D02B00DF3126 /* ItemListViewModel.swift in Sources */,
 				5CED1BBD24BFB18B00DF3126 /* AppDelegate.swift in Sources */,
 				5CED1BBF24BFB18B00DF3126 /* SceneDelegate.swift in Sources */,
-				5CED1BC124BFB18B00DF3126 /* ContentView.swift in Sources */,
+				5CED1BDB24C0D05E00DF3126 /* ItemCellViewModel.swift in Sources */,
+				5C7EB70A24C0E2DC002AABCF /* AppDelegate+Resolving.swift in Sources */,
+				5CED1BDE24C0DAD300DF3126 /* ItemRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +410,7 @@
 		};
 		5CED1BCE24BFB18F00DF3126 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A6836D65E927ABFD83C72B1 /* Pods-KitchenSync.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -294,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicobasile.KitchenSync;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kitchen Sync";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,6 +431,7 @@
 		};
 		5CED1BCF24BFB18F00DF3126 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBC60B84161547F4BEEBA0FB /* Pods-KitchenSync.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -314,7 +444,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicobasile.KitchenSync;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kitchen Sync";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
