@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		47BD0A19A51FE3931C6CB5F0 /* Pods_KitchenSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E168E661B9FF22FF87620F5 /* Pods_KitchenSync.framework */; };
 		5C7EB70A24C0E2DC002AABCF /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */; };
+		5C7EB70C24C0E8B9002AABCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */; };
 		5CED1BBD24BFB18B00DF3126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */; };
 		5CED1BBF24BFB18B00DF3126 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */; };
 		5CED1BC324BFB18F00DF3126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CED1BC224BFB18F00DF3126 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
+		5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5C7EB70D24C0E8BD002AABCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CED1BB924BFB18B00DF3126 /* Kitchen Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		5CED1BBB24BFB18B00DF3126 /* KitchenSync */ = {
 			isa = PBXGroup;
 			children = (
+				5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */,
 				5CED1BDC24C0DABE00DF3126 /* Repositories */,
 				5CED1BD724C0D01900DF3126 /* ViewModels */,
 				5CED1BD624C0CF3800DF3126 /* App */,
@@ -89,6 +93,7 @@
 				5CED1BC224BFB18F00DF3126 /* Assets.xcassets */,
 				5CED1BC724BFB18F00DF3126 /* LaunchScreen.storyboard */,
 				5CED1BCA24BFB18F00DF3126 /* Info.plist */,
+				5C7EB70D24C0E8BD002AABCF /* GoogleService-Info.plist */,
 				5CED1BC424BFB18F00DF3126 /* Preview Content */,
 			);
 			path = KitchenSync;
@@ -215,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CED1BC924BFB18F00DF3126 /* LaunchScreen.storyboard in Resources */,
+				5C7EB70C24C0E8B9002AABCF /* GoogleService-Info.plist in Resources */,
 				5CED1BC624BFB18F00DF3126 /* Preview Assets.xcassets in Resources */,
 				5CED1BC324BFB18F00DF3126 /* Assets.xcassets in Resources */,
 			);

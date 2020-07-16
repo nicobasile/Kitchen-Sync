@@ -51,7 +51,7 @@ struct ItemListView : View {
                     ItemCell(itemCellVM: itemCellVM)
                 }
                 .onDelete { indexSet in
-                    self.itemListVM.removeItem(atOffsets: indexSet)
+                    self.itemListVM.removeItems(atOffsets: indexSet)
                 }
                 if newItem {
                     ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in

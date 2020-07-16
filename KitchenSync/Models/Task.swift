@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct Item: Identifiable {
-    var id: String = UUID().uuidString
+struct Item: Codable, Identifiable {
+    @DocumentID var id: String?
     var name: String
     var completed: Bool
+    @ServerTimestamp var createdTime: Timestamp?
 }
 
 var first: Item = Item(name: "Eggs", completed: false)

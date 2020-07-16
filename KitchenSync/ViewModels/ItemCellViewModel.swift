@@ -8,8 +8,11 @@
 
 import Foundation
 import Combine
+import Resolver
 
 class ItemCellViewModel: ObservableObject, Identifiable {
+    @Injected var itemRepository: ItemRepository
+    
     @Published var item: Item
     
     var id: String = ""
@@ -30,8 +33,16 @@ class ItemCellViewModel: ObservableObject, Identifiable {
           .store(in: &cancellables)
 
         $item
-          .map { $0.id }
+          .compactMap { $0.id }
           .assign(to: \.id, on: self)
+          .store(in: &cancellables)
+        
+        $item
+          .dropFirst()
+          .debounce(for: 0.8, scheduler: RunLoop.main)
+          .sink { item in
+              self.itemRepository.updateItem(item)
+          }
           .store(in: &cancellables)
     }
 }

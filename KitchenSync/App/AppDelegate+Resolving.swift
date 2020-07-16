@@ -11,6 +11,6 @@ import Resolver
 
 extension Resolver: ResolverRegistering {
   public static func registerAllServices() {
-    register { TestDataItemRepository() as ItemRepository }.scope(application)
+    register { FirestoreItemRepository() as ItemRepository }.scope(application)
   }
 }

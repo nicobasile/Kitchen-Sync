@@ -7,4 +7,7 @@ target 'KitchenSync' do
 
   # Pods for KitchenSync
   pod 'Resolver'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 end
