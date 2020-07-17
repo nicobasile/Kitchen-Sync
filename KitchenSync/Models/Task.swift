@@ -15,6 +15,7 @@ struct Item: Codable, Identifiable {
     var name: String
     var completed: Bool
     @ServerTimestamp var createdTime: Timestamp?
+    var userId: String?
 }
 
 var first: Item = Item(name: "Eggs", completed: false)

@@ -10,6 +10,7 @@
 		47BD0A19A51FE3931C6CB5F0 /* Pods_KitchenSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E168E661B9FF22FF87620F5 /* Pods_KitchenSync.framework */; };
 		5C7EB70A24C0E2DC002AABCF /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */; };
 		5C7EB70C24C0E8B9002AABCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */; };
+		5C7EB71024C2249A002AABCF /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EB70F24C2249A002AABCF /* AuthenticationService.swift */; };
 		5CED1BBD24BFB18B00DF3126 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */; };
 		5CED1BBF24BFB18B00DF3126 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */; };
 		5CED1BC324BFB18F00DF3126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CED1BC224BFB18F00DF3126 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		5C7EB70924C0E2DC002AABCF /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C7EB70D24C0E8BD002AABCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5C7EB70F24C2249A002AABCF /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationService.swift; path = KitchenSync/App/AuthenticationService.swift; sourceTree = SOURCE_ROOT; };
 		5CED1BB924BFB18B00DF3126 /* Kitchen Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CED1BBC24BFB18B00DF3126 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CED1BBE24BFB18B00DF3126 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5C7EB70E24C22482002AABCF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5C7EB70F24C2249A002AABCF /* AuthenticationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5CED1BB024BFB18B00DF3126 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		5CED1BBB24BFB18B00DF3126 /* KitchenSync */ = {
 			isa = PBXGroup;
 			children = (
+				5C7EB70E24C22482002AABCF /* Services */,
 				5C7EB70B24C0E8B9002AABCF /* GoogleService-Info.plist */,
 				5CED1BDC24C0DABE00DF3126 /* Repositories */,
 				5CED1BD724C0D01900DF3126 /* ViewModels */,
@@ -278,6 +289,7 @@
 				5CED1BD524C0CCCC00DF3126 /* ItemListView.swift in Sources */,
 				5CED1BD224C0CC0B00DF3126 /* Task.swift in Sources */,
 				5CED1BD924C0D02B00DF3126 /* ItemListViewModel.swift in Sources */,
+				5C7EB71024C2249A002AABCF /* AuthenticationService.swift in Sources */,
 				5CED1BBD24BFB18B00DF3126 /* AppDelegate.swift in Sources */,
 				5CED1BBF24BFB18B00DF3126 /* SceneDelegate.swift in Sources */,
 				5CED1BDB24C0D05E00DF3126 /* ItemCellViewModel.swift in Sources */,
