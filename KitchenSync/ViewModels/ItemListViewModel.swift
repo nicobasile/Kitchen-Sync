@@ -37,11 +37,4 @@ class ItemListViewModel: ObservableObject {
     func addItem(item: Item) {
       itemRepository.addItem(item)
     }
-    
-    /*func addItem(item: Item) {
-        itemCellViewModels.append(ItemCellViewModel(item: item))
-    }
-    func removeItem(atOffsets indexSet: IndexSet) {
-        itemCellViewModels.remove(atOffsets: indexSet)
-    }*/
 }

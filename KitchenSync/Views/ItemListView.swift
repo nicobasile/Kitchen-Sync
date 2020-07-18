@@ -39,51 +39,59 @@ enum InputError: Error {
 struct ItemListView : View {
     @ObservedObject var itemListVM = ItemListViewModel()
     @State var newItem = false
+    @State var showSettingsScreen = false
 
     var body: some View {
-        VStack {
-            // Header
-            Text("Kitchen Sync");
-            
-            // Item List
-            List {
-                ForEach(itemListVM.itemCellViewModels) { itemCellVM in
-                    ItemCell(itemCellVM: itemCellVM)
-                }
-                .onDelete { indexSet in
-                    self.itemListVM.removeItems(atOffsets: indexSet)
-                }
-                if newItem {
-                    ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in
-                        if case .success(let item) = result {
-                            self.itemListVM.addItem(item: item)
+        NavigationView {
+            VStack {
+                // Item List
+                List {
+                    ForEach(itemListVM.itemCellViewModels) { itemCellVM in
+                        ItemCell(itemCellVM: itemCellVM)
+                    }
+                    .onDelete { indexSet in
+                        self.itemListVM.removeItems(atOffsets: indexSet)
+                    }
+                    if newItem {
+                        ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in
+                            if case .success(let item) = result {
+                                self.itemListVM.addItem(item: item)
+                            }
+                            self.newItem.toggle()
                         }
-                        self.newItem.toggle()
                     }
                 }
-            }
-            
-            // Bottom Buttons
-            HStack {
-                Spacer()
-                Button(action: { /*self.items.removeAll()*/ }) {
-                    Text("Finish Trip")
-                }
-                    .padding()
-                    .accentColor(Color(UIColor.systemRed))
-                Spacer()
-                Button(action: { self.newItem.toggle() }) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("New Item")
+                // Bottom Buttons
+                HStack {
+                    Spacer()
+                    Button(action: { /*self.items.removeAll()*/ }) {
+                        Text("Finish Trip")
                     }
+                        .padding()
+                        .accentColor(Color(UIColor.systemRed))
+                    Spacer()
+                    Button(action: { self.newItem.toggle() }) {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            Text("New Item")
+                        }
+                    }
+                        .padding()
+                        .accentColor(Color(UIColor.systemRed))
+                    Spacer()
                 }
-                    .padding()
-                    .accentColor(Color(UIColor.systemRed))
-                Spacer()
             }
+            .navigationBarTitle("Kitchen Sync")
+            .navigationBarItems(trailing:
+              Button(action: {
+                self.showSettingsScreen.toggle()
+              }) {
+                Text("Temp")
+              }
+            )
+            .sheet(isPresented: $showSettingsScreen) { SettingsView() }
         }
     }
 }
