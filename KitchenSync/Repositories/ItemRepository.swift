@@ -108,7 +108,7 @@ class FirestoreItemRepository: BaseItemRepository, ItemRepository, ObservableObj
             }
         }
     }
-    
+        
     func updateItem(_ item: Item) {
         if let itemID = item.id {
             do {
