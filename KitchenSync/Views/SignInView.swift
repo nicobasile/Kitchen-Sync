@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 
 struct SignInView: View {
+    @ObservedObject var itemListVM = ItemListViewModel()
+    
     @Environment(\.presentationMode) var presentationMode
     @State var group: String = ""
     @State var password: String = ""
@@ -30,14 +32,17 @@ struct SignInView: View {
     }
     
     func registerIn(email: String, password: String) {
+        // Remove all data before signing in
+        self.itemListVM.removeAll()
+
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error {
                 self.errorText = error.localizedDescription
+                print("Error: \(self.errorText)")
                 return
             }
             guard user != nil else { return }
         }
-        print("\(errorText)")
         print("Joined: \(email)  +  \(password)")
     }
 }

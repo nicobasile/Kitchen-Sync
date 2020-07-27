@@ -34,28 +34,6 @@ struct SettingsView: View {
               
                 Form {
                     Section {
-                        HStack {
-                            Image(systemName: "checkmark.circle")
-                            Text("App Icon")
-                            Spacer()
-                            Text("Plain")
-                        }
-                    }
-                
-                    Section {
-                        HStack {
-                            Image("Siri")
-                                .resizable()
-                                .frame(width: 17, height: 17)
-                            Text("Siri")
-                        }
-                    }
-                
-                    Section {
-                        HStack {
-                            Image(systemName: "questionmark.circle")
-                            Text("Help & Feedback")
-                        }
                         NavigationLink(destination: Text("About Page") ) {
                             HStack {
                                 Image(systemName: "info.circle")
@@ -68,13 +46,37 @@ struct SettingsView: View {
                         HStack {
                             if settingsViewModel.isAnonymous {
                                 Spacer()
-                                Button(action: { self.showSignUp = true }) {
+                                
+                                /*Button(action: { self.showSignUp = true }) {
                                     Text("Create a group")
-                                } .padding().sheet(isPresented: $showSignUp) { SignUpView() }
+                                }
+                                .padding()
+                                .sheet(isPresented: $showSignUp) { SignUpView() }
+                                
                                 Spacer()
+                                
                                 Button(action: { self.showSignIn = true }) {
                                     Text("Join a group")
-                                } .padding().sheet(isPresented: $showSignIn) { SignInView() }
+                                }
+                                .padding()
+                                .sheet(isPresented: $showSignIn) { SignInView() }*/
+                                
+                                Button(action: {}) {
+                                    Text("Create a group")
+                                }
+                                    .onTapGesture { self.showSignUp.toggle() }
+                                    .padding()
+                                    .sheet(isPresented: $showSignUp) { SignUpView() }
+                                
+                                Spacer()
+                                
+                                Button(action: { }) {
+                                    Text("Join a group")
+                                }
+                                    .onTapGesture { self.showSignIn.toggle() }
+                                    .padding()
+                                    .sheet(isPresented: $showSignIn) { SignInView() }
+                                
                                 Spacer()
                             }
                             else {

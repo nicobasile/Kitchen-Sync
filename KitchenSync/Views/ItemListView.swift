@@ -42,56 +42,64 @@ struct ItemListView : View {
     @State var showSettingsScreen = false
 
     var body: some View {
-        NavigationView {
-            VStack {
-                // Item List
-                List {
-                    ForEach(itemListVM.itemCellViewModels) { itemCellVM in
-                        ItemCell(itemCellVM: itemCellVM)
-                    }
-                    .onDelete { indexSet in
-                        self.itemListVM.removeItems(atOffsets: indexSet)
-                    }
-                    if newItem {
-                        ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in
-                            if case .success(let item) = result {
-                                self.itemListVM.addItem(item: item)
-                            }
-                            self.newItem.toggle()
-                        }
-                    }
+        VStack {
+            // Header
+            HStack {
+                Text("Kitchen Sync")
+                    .padding(.leading, 20.0)
+                    .font(Font.custom("Arial-BoldMT", size: 36))
+                Spacer()
+                Button(action: { self.showSettingsScreen.toggle() } ) {
+                    Image("settings")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .padding(.trailing, 20.0)
+                        .foregroundColor(Color.black)
                 }
-                // Bottom Buttons
-                HStack {
-                    Spacer()
-                    Button(action: { /*self.items.removeAll()*/ }) {
-                        Text("Finish Trip")
-                    }
-                        .padding()
-                        .accentColor(Color(UIColor.systemRed))
-                    Spacer()
-                    Button(action: { self.newItem.toggle() }) {
-                        HStack {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                            Text("New Item")
+                .sheet(isPresented: $showSettingsScreen, content: { SettingsView() })
+            }
+            .offset(x: 0, y: 20)
+            
+            // Item List
+            List {
+                ForEach(itemListVM.itemCellViewModels) { itemCellVM in
+                    ItemCell(itemCellVM: itemCellVM)
+                }
+                .onDelete { indexSet in
+                    self.itemListVM.removeItems(atOffsets: indexSet)
+                }
+                if newItem {
+                    ItemCell(itemCellVM: ItemCellViewModel.newItem()) { result in
+                        if case .success(let item) = result {
+                            self.itemListVM.addItem(item: item)
                         }
+                        self.newItem.toggle()
                     }
-                        .padding()
-                        .accentColor(Color(UIColor.systemRed))
-                    Spacer()
                 }
             }
-            .navigationBarTitle("Kitchen Sync")
-            .navigationBarItems(trailing:
-              Button(action: {
-                self.showSettingsScreen.toggle()
-              }) {
-                Text("Temp")
-              }
-            )
-            .sheet(isPresented: $showSettingsScreen) { SettingsView() }
+            .offset(x: 0, y: 15)
+
+            // Bottom Buttons
+            HStack {
+                Spacer()
+                Button(action: { self.itemListVM.removeChecked() }) {
+                    Text("Finish Trip")
+                }
+                    .padding()
+                    .accentColor(Color(UIColor.systemRed))
+                Spacer()
+                Button(action: { self.newItem.toggle() }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("New Item")
+                    }
+                }
+                    .padding()
+                    .accentColor(Color(UIColor.systemRed))
+                Spacer()
+            }
         }
     }
 }
@@ -102,4 +110,38 @@ struct ItemListView_Previews: PreviewProvider {
     }
 }
 
+extension View {
+    /// Navigate to a new view.
+    /// - Parameters:
+    ///   - view: View to navigate to.
+    ///   - binding: Only navigates when this condition is `true`.
+    func navigate<SomeView: View>(to view: SomeView, when binding: Binding<Bool>) -> some View {
+        modifier(NavigateModifier(destination: view, binding: binding))
+    }
+}
 
+// MARK: - NavigateModifier
+fileprivate struct NavigateModifier<SomeView: View>: ViewModifier {
+
+    // MARK: Private properties
+    fileprivate let destination: SomeView
+    @Binding fileprivate var binding: Bool
+
+
+    // MARK: - View body
+    fileprivate func body(content: Content) -> some View {
+        NavigationView {
+            ZStack {
+                content
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
+                NavigationLink(destination: destination
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true),
+                               isActive: $binding) {
+                    EmptyView()
+                }
+            }
+        }
+    }
+}

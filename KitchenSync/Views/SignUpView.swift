@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 
 struct SignUpView: View {
+    @ObservedObject var itemListVM = ItemListViewModel()
+
     @Environment(\.presentationMode) var presentationMode
     @State var group: String = ""
     @State var password: String = ""
@@ -30,18 +32,33 @@ struct SignUpView: View {
     }
     
     func registerUp(email: String, password: String) {
+        // Remove all data before signing up
+        self.itemListVM.removeAll()
+        
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            print("Test?")
-            guard let user = authResult?.user, error == nil else {
-                print("Test??")
+            guard let _ = authResult?.user, error == nil else {
                 let errorText: String  = error?.localizedDescription ?? "unknown error"
                 self.errorText = errorText
                 return
             }
-            print("\(user.email!) created")
+            print("Created: \(email) + \(password)")
+            
+            // Change _ above to user to make code below work
+            /*let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+            user.link(with: credential) { (authResult, error) in
+                if error == nil { print("Anonymous account successfully upgraded") }
+                else {
+                    let errorText: String = error?.localizedDescription ?? "Unknown Error"
+                    print("Error: \(errorText)")
+                }
+            }*/
         }
-        print("\(errorText)")
-        print("Created: \(email)  +  \(password)")
+        /*// Delete empty anonymous user
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if error != nil { print("Error deleting anonymous user") }
+            else { print("Deleted anonymous user") }
+        }*/
     }
 }
 
