@@ -8,51 +8,93 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 struct SignUpView: View {
     @ObservedObject var itemListVM = ItemListViewModel()
 
     @Environment(\.presentationMode) var presentationMode
-    @State var group: String = ""
-    @State var password: String = ""
+    @State private var group: String = ""
+    @State private var password: String = ""
+    @State private var keyboardHeight: CGFloat = 0
     @State var errorText: String = ""
-    
+
     var body: some View {
-        VStack {
-            Text("Email")
-            TextField("user@domain.com", text: $group)
-        
-            Text("Password")
-            SecureField("Enter a password", text: $password)
+        VStack(alignment: .leading, spacing: 20) {
+            Spacer()
             
-            Button(action: { self.registerUp(email: self.group, password: self.password) }) {
-                Text("Sign Up")
+            HStack {
+                Spacer()
+                Image("Logo")
+                    .resizable()
+                    .frame(width: 94, height: 10)
+                    .aspectRatio(CGSize(width: 315, height: 502), contentMode: .fit)
+                Spacer()
             }
-        }.frame(alignment: .center)
+            
+            VStack(spacing: 20) {
+                Text("Group Name")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding(.top, 10)
+                TextField("Enter a new group name", text: $group)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 10)
+                Text("Password")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                SecureField("Enter a password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 10)
+
+                HStack {
+                    Spacer()
+                    Button(action: { self.registerUp(email: self.group, password: self.password) }) {
+                        Text("Create Group").font(.headline).foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+                    .padding(.vertical, 10)
+                    .background(Color.green)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 40)
+                Text("").padding(.vertical, -10)
+            }
+                .background(Color.gray.opacity(0.8))
+                .cornerRadius(10)
+                .padding(.bottom, keyboardHeight)
+                .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+        
+            Spacer()
+        }
+        .padding(.horizontal)
+        .background(Image("GroupBackground")
+            .resizable()
+            .clipped()
+            .scaledToFill()
+        .offset(x: -220, y: 0)
+        )
+        .edgesIgnoringSafeArea([.top, .bottom])
     }
     
     func registerUp(email: String, password: String) {
-        // Remove all data before signing up
+        // Remove all anonymous data before signing up
         self.itemListVM.removeAll()
         
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let _ = authResult?.user, error == nil else {
-                let errorText: String  = error?.localizedDescription ?? "unknown error"
-                self.errorText = errorText
-                return
-            }
-            print("Created: \(email) + \(password)")
-            
-            // Change _ above to user to make code below work
-            /*let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-            user.link(with: credential) { (authResult, error) in
-                if error == nil { print("Anonymous account successfully upgraded") }
-                else {
-                    let errorText: String = error?.localizedDescription ?? "Unknown Error"
-                    print("Error: \(errorText)")
+        let fakeEmail = email + "@fakeEmail.com"
+        
+        Auth.auth()
+            .createUser(withEmail: fakeEmail, password: password) { authResult, error in
+                guard let _ = authResult?.user, error == nil else {
+                    let errorText: String  = error?.localizedDescription ?? "unknown error"
+                    self.errorText = errorText
+                    return
                 }
-            }*/
-        }
+                print("Created: \(email) + \(password)")
+            }
+
         /*// Delete empty anonymous user
         let user = Auth.auth().currentUser
         user?.delete { error in

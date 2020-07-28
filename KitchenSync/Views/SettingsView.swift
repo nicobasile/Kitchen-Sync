@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SettingsView: View {
     @ObservedObject var settingsViewModel = SettingsViewModel()
@@ -14,13 +15,13 @@ struct SettingsView: View {
 
     @State var showSignUp = false
     @State var showSignIn = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                Image("Logo")
+                Image("settings")
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
                     .aspectRatio(contentMode: .fit)
                     .padding(.horizontal, 100)
                     .padding(.top, 20)
@@ -33,62 +34,103 @@ struct SettingsView: View {
                     .fontWeight(.semibold)
               
                 Form {
+                    Section(footer: footer) {
+                        VStack {
+                            Text("Group Data Syncing")
+                                .font(.title).padding(.top, 10)
+                            Text("All items in a group will be automatically synced across all members of the group")
+                                .padding().padding(.top, -5)
+                            HStack {
+                                if settingsViewModel.isAnonymous {
+                                    Spacer()
+                                
+                                    Button(action: {}) {
+                                        Text("Create Group")
+                                            .padding()
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                    }
+                                        .background(Color.green)
+                                        .cornerRadius(10)
+                                        .onTapGesture { self.showSignUp.toggle() }
+                                        .padding(.bottom, 10)
+                                        .sheet(isPresented: $showSignUp) { SignUpView() }
+                                    
+                                    Spacer()
+                                    
+                                    Button(action: { }) {
+                                        Text("   Join Group   ")
+                                            .padding()
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                    }
+                                        .background(Color.green)
+                                        .cornerRadius(10)
+                                        .onTapGesture { self.showSignIn.toggle() }
+                                        .padding(.bottom, 10)
+                                        .sheet(isPresented: $showSignIn) { SignInView() }
+                                    
+                                    Spacer()
+                                }
+                                else {
+                                    Spacer()
+                                    Button(action: { self.settingsViewModel.logout() }) {
+                                            Text("   Logout   ")
+                                                .padding()
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                    }
+                                        .background(Color.green)
+                                        .cornerRadius(10)
+                                        .padding(.bottom, 10)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
                     Section {
-                        NavigationLink(destination: Text("About Page") ) {
+                        NavigationLink(destination:
+                            VStack(alignment: .center, spacing: 20) {
+                                Spacer()
+                                VStack(spacing: 10) {
+                                    Text("Kitchen Sync")
+                                        .font(Font.custom("Arial-BoldMT", size: 42))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                    Text("Made by Nicolas Basile")
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                    Text("For more of my work, visit:")
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                    Text("nicobasile.com")
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                    Text("linkedin.com/nicobasile")
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                }
+                                    .padding()
+                                    .background(Color.gray.opacity(0.8))
+                                    .cornerRadius(10)
+                                Spacer()
+                            }
+                                .padding(.horizontal)
+                                .background(Image("GroupBackground")
+                                    .resizable()
+                                    .clipped()
+                                    .scaledToFill()
+                                    .offset(x: -220, y: 0)
+                                )
+                                .edgesIgnoringSafeArea([.top, .bottom])
+                            ) {
                             HStack {
                                 Image(systemName: "info.circle")
                                 Text("About")
                             }
+                                .padding(.leading)
                         }
-                    }
-                    
-                    Section(footer: footer) {
-                        HStack {
-                            if settingsViewModel.isAnonymous {
-                                Spacer()
-                                
-                                /*Button(action: { self.showSignUp = true }) {
-                                    Text("Create a group")
-                                }
-                                .padding()
-                                .sheet(isPresented: $showSignUp) { SignUpView() }
-                                
-                                Spacer()
-                                
-                                Button(action: { self.showSignIn = true }) {
-                                    Text("Join a group")
-                                }
-                                .padding()
-                                .sheet(isPresented: $showSignIn) { SignInView() }*/
-                                
-                                Button(action: {}) {
-                                    Text("Create a group")
-                                }
-                                    .onTapGesture { self.showSignUp.toggle() }
-                                    .padding()
-                                    .sheet(isPresented: $showSignUp) { SignUpView() }
-                                
-                                Spacer()
-                                
-                                Button(action: { }) {
-                                    Text("Join a group")
-                                }
-                                    .onTapGesture { self.showSignIn.toggle() }
-                                    .padding()
-                                    .sheet(isPresented: $showSignIn) { SignInView() }
-                                
-                                Spacer()
-                            }
-                            else {
-                                Button(action: { self.settingsViewModel.logout() }) {
-                                    HStack {
-                                        Spacer()
-                                        Text("Logout")
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
+                            .padding(.trailing)
                     }
                 }
                 .navigationBarTitle("Settings", displayMode: .inline)
@@ -97,23 +139,58 @@ struct SettingsView: View {
             }
         }
     }
-    
+
     var footer: some View {
-      HStack {
-        Spacer()
-        if settingsViewModel.isAnonymous {
-          Text("You are not part of a group yet")
+        HStack {
+            Spacer()
+            if settingsViewModel.isAnonymous {
+                Text("You are not part of a group yet")
+            }
+            else {
+                Text("Active group: \(groupName())")
+            }
+            Spacer()
         }
-        else {
-          Text("Active group: \(self.settingsViewModel.email)")
-        }
-        Spacer()
-      }
+    }
+    
+    func groupName() -> String {
+        let removeEmailIndex = settingsViewModel.email.firstIndex(of: "@") ?? settingsViewModel.email.endIndex
+        let groupName = settingsViewModel.email[..<removeEmailIndex]
+        return String(groupName).capitalizingFirstLetter()
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingsView()
-  }
+    static var previews: some View {
+        SettingsView()
+    }
+}
+
+extension Publishers {
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
+            .map { $0.keyboardHeight }
+        
+        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
+            .map { _ in CGFloat(0) }
+        
+        return MergeMany(willShow, willHide)
+            .eraseToAnyPublisher()
+    }
+}
+
+extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

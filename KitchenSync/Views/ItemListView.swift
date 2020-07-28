@@ -17,7 +17,7 @@ struct ItemCell: View {
         HStack {
             Image(systemName: itemCellVM.completionStateIconName)
                 .resizable()
-                .frame(width: 20, height: 20)
+                .frame(width: 30, height: 30)
                 .onTapGesture {
                     self.itemCellVM.item.completed.toggle()
                 }
@@ -28,6 +28,8 @@ struct ItemCell: View {
                         else
                         { self.onCommit(.failure(.empty)) } })
                 .id(itemCellVM.id)
+                .offset(x: 5, y: 1)
+                .font(Font.custom("AppleSDGothicNeo-Medium", size: 20))
         }
     }
 }
@@ -46,19 +48,23 @@ struct ItemListView : View {
             // Header
             HStack {
                 Text("Kitchen Sync")
-                    .padding(.leading, 20.0)
-                    .font(Font.custom("Arial-BoldMT", size: 36))
+                    .padding(.leading, 15.0)
+                    .padding(.top, 10.0)
+                    .font(Font.custom("AppleSDGothicNeo-Medium", size: 42))
                 Spacer()
                 Button(action: { self.showSettingsScreen.toggle() } ) {
                     Image("settings")
                         .resizable()
-                        .frame(width: 40, height: 40)
-                        .padding(.trailing, 20.0)
-                        .foregroundColor(Color.black)
+                        .padding(5.0)
+                        .frame(width: 45, height: 45)
+                        .background(Color.green)
+                        .foregroundColor(Color.white)
                 }
-                .sheet(isPresented: $showSettingsScreen, content: { SettingsView() })
+                    .cornerRadius(10)
+                    .padding(.trailing, 25.0)
+                    .sheet(isPresented: $showSettingsScreen, content: { SettingsView() })
             }
-            .offset(x: 0, y: 20)
+            .offset(x: 5, y: 5)
             
             // Item List
             List {
@@ -77,30 +83,48 @@ struct ItemListView : View {
                     }
                 }
             }
-            .offset(x: 0, y: 15)
+            .offset(x: 5, y: -15)
+
 
             // Bottom Buttons
             HStack {
                 Spacer()
                 Button(action: { self.itemListVM.removeChecked() }) {
-                    Text("Finish Trip")
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .frame(width: 33, height: 33)
+                            .accentColor(Color(UIColor.systemGreen))
+                        Text("Finish Trip")
+                            .font(Font.custom("AppleSDGothicNeo-Medium", size: 24))
+                            .accentColor(Color.black)
+                    }
                 }
                     .padding()
-                    .accentColor(Color(UIColor.systemRed))
                 Spacer()
                 Button(action: { self.newItem.toggle() }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .frame(width: 33, height: 33)
+                            .accentColor(Color(UIColor.systemGreen))
                         Text("New Item")
+                            .font(Font.custom("AppleSDGothicNeo-Medium", size: 24))
+                            .accentColor(Color.black)
                     }
                 }
                     .padding()
-                    .accentColor(Color(UIColor.systemRed))
                 Spacer()
             }
+
         }
+    }
+    
+    struct TextStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            return content
+                .font(Font.custom("AppleSDGothicNeo-Medium", size: 24))
+       }
     }
 }
 
