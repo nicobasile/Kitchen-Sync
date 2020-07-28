@@ -98,6 +98,7 @@ struct ItemListView : View {
                         Text("Finish Trip")
                             .font(Font.custom("AppleSDGothicNeo-Medium", size: 24))
                             .accentColor(Color.black)
+                            .offset(y: 1)
                     }
                 }
                     .padding()
@@ -111,6 +112,7 @@ struct ItemListView : View {
                         Text("New Item")
                             .font(Font.custom("AppleSDGothicNeo-Medium", size: 24))
                             .accentColor(Color.black)
+                            .offset(y: 1)
                     }
                 }
                     .padding()

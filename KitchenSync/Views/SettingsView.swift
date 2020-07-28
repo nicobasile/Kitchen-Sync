@@ -19,13 +19,18 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image("settings")
+                Spacer()
+                Spacer()
+                Image("Logo")
                     .resizable()
+                    //.clipped()
+                    //.scaledToFit()
                     .frame(width: 200, height: 200)
                     .aspectRatio(contentMode: .fit)
-                    .padding(.horizontal, 100)
-                    .padding(.top, 20)
-
+                    //.padding(.horizontal, 100)
+                    //.padding(.top, 20)
+                    .cornerRadius(50)
+                
                 Text("Thanks for using")
                     .font(.title)
 

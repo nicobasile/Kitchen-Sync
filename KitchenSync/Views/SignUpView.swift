@@ -48,6 +48,10 @@ struct SignUpView: View {
                 SecureField("Enter a password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 10)
+                if errorText != "" {
+                    Text(errorText)
+                        .foregroundColor(.white)
+                }
 
                 HStack {
                     Spacer()
@@ -60,7 +64,7 @@ struct SignUpView: View {
                     .background(Color.green)
                     .cornerRadius(10)
                     .padding(.horizontal, 40)
-                Text("").padding(.vertical, -10)
+                    .padding(.bottom, 20)
             }
                 .background(Color.gray.opacity(0.8))
                 .cornerRadius(10)
@@ -88,8 +92,10 @@ struct SignUpView: View {
         Auth.auth()
             .createUser(withEmail: fakeEmail, password: password) { authResult, error in
                 guard let _ = authResult?.user, error == nil else {
-                    let errorText: String  = error?.localizedDescription ?? "unknown error"
-                    self.errorText = errorText
+                    self.errorText = error?.localizedDescription ?? "Unknown Error"
+                    if self.errorText == "The email address is badly formatted." {
+                        self.errorText = "Group name cannot have spaces"
+                    }
                     return
                 }
                 print("Created: \(email) + \(password)")

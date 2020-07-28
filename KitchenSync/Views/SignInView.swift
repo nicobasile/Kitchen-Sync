@@ -48,6 +48,10 @@ struct SignInView: View {
                 SecureField("Enter a password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 10)
+                if errorText != "" {
+                    Text(errorText)
+                        .foregroundColor(.white)
+                }
                 
                 HStack {
                     Spacer()
@@ -87,8 +91,10 @@ struct SignInView: View {
 
         Auth.auth().signIn(withEmail: fakeEmail, password: password) { user, error in
             if let error = error {
-                self.errorText = error.localizedDescription
-                print("Error: \(self.errorText)")
+                self.errorText = error.localizedDescription 
+                if self.errorText == "The email address is badly formatted." {
+                    self.errorText = "Group name cannot have spaces"
+                }
                 return
             }
             guard user != nil else { return }
